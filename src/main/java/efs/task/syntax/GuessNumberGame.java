@@ -44,7 +44,7 @@ public class GuessNumberGame {
         int trial = 0;
         String[] tab = new String[(int)this.L];
         String guess;
-        int yourAnswer;
+        int answer;
         Scanner scanner = new Scanner(System.in);
 
         Arrays.fill(tab,".");
@@ -69,16 +69,16 @@ public class GuessNumberGame {
 
             guess = scanner.next();
             try{
-                yourAnswer = Integer.parseInt(guess);
+                answer = Integer.parseInt(guess);
             }catch (Exception e){
                 System.out.println(UsefulConstants.NOT_A_NUMBER);
                 trial++;
                 continue;
             }
 
-            if(yourAnswer > number){
+            if(answer > number){
                 System.out.println("To "+UsefulConstants.TO_MUCH);
-            }else if(yourAnswer < number){
+            }else if(answer < number){
                 System.out.println("To "+UsefulConstants.TO_LESS);
             }else{
                 System.out.println("To "+UsefulConstants.YES);
