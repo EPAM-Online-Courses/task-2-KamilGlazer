@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class GuessNumberGame {
 
-    private int M;
-    private double L;
-    private int number;
+    private final int M;
+    private final double L;
+    private final int number;
 
     //Do not modify main method
     public static void main(String[] args) {
