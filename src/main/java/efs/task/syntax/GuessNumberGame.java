@@ -43,15 +43,14 @@ public class GuessNumberGame {
 
         int trial = 0;
         String[] tab = new String[(int)this.L];
-        int guess;
+        String guess;
+        int yourAnswer;
+        Scanner scanner = new Scanner(System.in);
 
         Arrays.fill(tab,".");
 
-
         System.out.println("Zagrajmy. Zgadnij liczbę z zakresu <1,"+ M +">");
         while (true){
-
-            Scanner scanner = new Scanner(System.in);
 
             if(trial >= (int)this.L){
                 System.out.println(UsefulConstants.UNFORTUNATELY+ ", wyczerpałeś limit prób ("+(int)this.L+") do odgadnięcia liczby "+this.number);
@@ -68,19 +67,23 @@ public class GuessNumberGame {
 
             System.out.println(UsefulConstants.GIVE_ME+" liczbę : ");
 
+            guess = scanner.next();
             try{
-                guess = scanner.nextInt();
-                if(guess > number){
-                    System.out.println("To "+UsefulConstants.TO_MUCH);
-                }else if(guess < number){
-                    System.out.println("To "+UsefulConstants.TO_LESS);
-                }else{
-                    System.out.println("To "+UsefulConstants.YES);
-                    System.out.println(UsefulConstants.CONGRATULATIONS+", "+(trial+1)+" - tyle prób zajeło Ci odgadnięcie liczby "+this.number);
-                    break;
-                }
+                yourAnswer = Integer.parseInt(guess);
             }catch (Exception e){
-                System.out.println("Hmm, '"+scanner.next()+"' to "+UsefulConstants.NOT_A_NUMBER);
+                System.out.println(UsefulConstants.NOT_A_NUMBER);
+                trial++;
+                continue;
+            }
+
+            if(yourAnswer > number){
+                System.out.println("To "+UsefulConstants.TO_MUCH);
+            }else if(yourAnswer < number){
+                System.out.println("To "+UsefulConstants.TO_LESS);
+            }else{
+                System.out.println("To "+UsefulConstants.YES);
+                System.out.println(UsefulConstants.CONGRATULATIONS+", "+(trial+1)+" - tyle prób zajeło Ci odgadnięcie liczby "+this.number);
+                break;
             }
 
             trial++;
